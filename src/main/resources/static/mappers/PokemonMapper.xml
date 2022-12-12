@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.anokaze.pokemon.mapper.PokemonMapper">
+    <sql id="selectColumns" >
+        <choose>
+            <when test="isSimple">
+                id, nationalId, paldeaId, name, imagePath, type1, type2
+            </when>
+            <otherwise>
+                *
+            </otherwise>
+        </choose>
+    </sql>
+
+    <insert id="insertPokemon" parameterType="pers.anokaze.pokemon.entity.Pokemon">
+        INSERT INTO pokemon(nationalId, paldeaId, name, imagePath, type1, type2, hp, atk, def, spa, spd, spe)
+        VALUES (#{nationalId}, #{paldeaId}, #{name}, #{imagePath}, #{type1}, #{type2},
+                #{hp}, #{atk}, #{def}, #{spa}, #{spd}, #{spe});
+    </insert>
+
+    <select id="selectPokemonById" resultType="pers.anokaze.pokemon.entity.Pokemon">
+        SELECT * FROM pokemon WHERE id=#{id};
+    </select>
+
+    <select id="selectPokemonByQuery" resultType="pers.anokaze.pokemon.entity.Pokemon">
+        SELECT
+        <choose>
+            <when test="isSimple">
+                id, nationalId, paldeaId, name, imagePath, type1, type2
+            </when>
+            <otherwise>
+                *
+            </otherwise>
+        </choose>
+        FROM pokemon
+        <where>
+            <if test="nationalId != null"> AND nationalId = #{nationalId} </if>
+            <if test="paldeaId != null"> AND paldeaId = #{paldeaId} </if>
+            <if test="name != null and name != ''"> AND name LIKE CONCAT('%', #{name}, '%') </if>
+            <if test="type1 != null"> AND type1 = #{type1} </if>
+            <if test="type2 != null"> AND type2 = #{type2} </if>
+        </where>
+    </select>
+
+</mapper>

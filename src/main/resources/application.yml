@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.234.30.82:3306/pokemon?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=true
+    username: admin
+    password: Anokaze@01
+
+server:
+  port: 9000
