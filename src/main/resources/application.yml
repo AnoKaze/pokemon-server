@@ -5,5 +5,9 @@ spring:
     username: admin
     password: Anokaze@01
 
+mybatis:
+  mapper-locations: classpath:mappers/*Mapper.xml
+
 server:
-  port: 9000
+  port: 9001
+

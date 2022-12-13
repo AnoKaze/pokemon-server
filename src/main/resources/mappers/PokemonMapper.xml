@@ -24,7 +24,7 @@
         SELECT * FROM pokemon WHERE id=#{id};
     </select>
 
-    <select id="selectPokemonByQuery" resultType="pers.anokaze.pokemon.entity.Pokemon">
+    <select id="selectPokemonByQuery" resultType="pers.anokaze.pokemon.entity.Pokemon" parameterType="pers.anokaze.pokemon.entity.vo.PokemonQuery">
         SELECT
         <choose>
             <when test="isSimple">

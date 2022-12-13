@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 public class PokemonQuery {
     private Boolean isSimple = true;
-    private String nationalId;
-    private String paldeaId;
+    private Integer nationalId;
+    private Integer paldeaId;
     private String name;
     private String firstLetter;
     private Integer type1;
