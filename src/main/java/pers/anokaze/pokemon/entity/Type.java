@@ -9,4 +9,5 @@ import lombok.Data;
 public class Type {
     private Integer id;
     private String name;
+    private String tag;
 }

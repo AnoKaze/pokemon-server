@@ -11,9 +11,8 @@ public class Pokemon {
     private String nationalId;
     private String paldeaId;
     private String name;
-    private String imagePath;
-    private Type type1;
-    private Type type2;
+    private Integer type1;
+    private Integer type2;
     private Integer hp;
     private Integer atk;
     private Integer def;

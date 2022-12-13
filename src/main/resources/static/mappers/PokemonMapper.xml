@@ -6,7 +6,7 @@
     <sql id="selectColumns" >
         <choose>
             <when test="isSimple">
-                id, nationalId, paldeaId, name, imagePath, type1, type2
+                id, nationalId, paldeaId, name, type1, type2
             </when>
             <otherwise>
                 *
@@ -15,8 +15,8 @@
     </sql>
 
     <insert id="insertPokemon" parameterType="pers.anokaze.pokemon.entity.Pokemon">
-        INSERT INTO pokemon(nationalId, paldeaId, name, imagePath, type1, type2, hp, atk, def, spa, spd, spe)
-        VALUES (#{nationalId}, #{paldeaId}, #{name}, #{imagePath}, #{type1}, #{type2},
+        INSERT INTO pokemon(nationalId, paldeaId, name, type1, type2, hp, atk, def, spa, spd, spe)
+        VALUES (#{nationalId}, #{paldeaId}, #{name}, #{type1}, #{type2},
                 #{hp}, #{atk}, #{def}, #{spa}, #{spd}, #{spe});
     </insert>
 
@@ -28,7 +28,7 @@
         SELECT
         <choose>
             <when test="isSimple">
-                id, nationalId, paldeaId, name, imagePath, type1, type2
+                id, nationalId, paldeaId, name, type1, type2
             </when>
             <otherwise>
                 *
