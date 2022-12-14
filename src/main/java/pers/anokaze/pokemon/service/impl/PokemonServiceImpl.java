@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pers.anokaze.pokemon.entity.Pokemon;
+import pers.anokaze.pokemon.entity.vo.PokemonBaseVo;
 import pers.anokaze.pokemon.entity.vo.PokemonQuery;
 import pers.anokaze.pokemon.mapper.PokemonMapper;
 import pers.anokaze.pokemon.service.PokemonService;
@@ -20,17 +21,12 @@ public class PokemonServiceImpl implements PokemonService {
     final PokemonMapper pokemonMapper;
 
     @Override
-    public void insertPokemon(Pokemon pokemon) {
-        pokemonMapper.insertPokemon(pokemon);
-    }
-
-    @Override
     public Pokemon selectPokemonById(Integer id) {
         return pokemonMapper.selectPokemonById(id);
     }
 
     @Override
-    public List<Pokemon> selectPokemonByQuery(PokemonQuery query) {
+    public List<PokemonBaseVo> selectPokemonByQuery(PokemonQuery query) {
         return pokemonMapper.selectPokemonByQuery(query);
     }
 }

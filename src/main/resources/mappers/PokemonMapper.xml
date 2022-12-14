@@ -3,17 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pers.anokaze.pokemon.mapper.PokemonMapper">
-    <sql id="selectColumns" >
-        <choose>
-            <when test="isSimple">
-                id, nationalId, paldeaId, name, type1, type2
-            </when>
-            <otherwise>
-                *
-            </otherwise>
-        </choose>
-    </sql>
+    <resultMap id="pokemon-type-map" type="pers.anokaze.pokemon.entity.vo.PokemonBaseVo">
 
+    </resultMap>
+    
     <insert id="insertPokemon" parameterType="pers.anokaze.pokemon.entity.Pokemon">
         INSERT INTO pokemon(nationalId, paldeaId, name, type1, type2, hp, atk, def, spa, spd, spe)
         VALUES (#{nationalId}, #{paldeaId}, #{name}, #{type1}, #{type2},
@@ -24,23 +17,25 @@
         SELECT * FROM pokemon WHERE id=#{id};
     </select>
 
-    <select id="selectPokemonByQuery" resultType="pers.anokaze.pokemon.entity.Pokemon" parameterType="pers.anokaze.pokemon.entity.vo.PokemonQuery">
+    <select id="selectPokemonByQuery" resultType="pers.anokaze.pokemon.entity.vo.PokemonBaseVo" parameterType="pers.anokaze.pokemon.entity.vo.PokemonQuery">
         SELECT
         <choose>
             <when test="isSimple">
-                id, nationalId, paldeaId, name, type1, type2
+                p.id, nationalId, paldeaId, p.name, type1, type2
             </when>
             <otherwise>
                 *
             </otherwise>
         </choose>
-        FROM pokemon
+        FROM pokemon p
+        INNER JOIN type t1 ON p.type1 = t1.id
+        LEFT JOIN type t2 ON p.type2 = t2.id
         <where>
-            <if test="nationalId != null"> AND nationalId = #{nationalId} </if>
-            <if test="paldeaId != null"> AND paldeaId = #{paldeaId} </if>
-            <if test="name != null and name != ''"> AND name LIKE CONCAT('%', #{name}, '%') </if>
-            <if test="type1 != null"> AND type1 = #{type1} </if>
-            <if test="type2 != null"> AND type2 = #{type2} </if>
+            <if test="nationalId != null"> AND p.nationalId = #{nationalId} </if>
+            <if test="paldeaId != null"> AND p.paldeaId = #{paldeaId} </if>
+            <if test="name != null and name != ''"> AND p.name LIKE CONCAT('%', #{name}, '%') </if>
+            <if test="type1 != null"> AND p.type1 = #{type1} </if>
+            <if test="type2 != null"> AND p.type2 = #{type2} </if>
         </where>
     </select>
 
