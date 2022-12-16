@@ -1,8 +1,6 @@
 package pers.anokaze.pokemon.mapper;
 
-import pers.anokaze.pokemon.entity.Pokemon;
-import pers.anokaze.pokemon.entity.vo.PokemonBaseVo;
-import pers.anokaze.pokemon.entity.vo.PokemonQuery;
+import pers.anokaze.pokemon.entity.vo.PaldeaPokemonVo;
 
 import java.util.List;
 
@@ -11,16 +9,8 @@ import java.util.List;
  */
 public interface PokemonMapper {
     /***
-     * 通过数据库id查询宝可梦
-     * @param id 宝可梦的数据库id
-     * @return 宝可梦对象
+     * 列出帕底亚地区的所有宝可梦
+     * @return 帕底亚地区的宝可梦列表
      */
-    Pokemon selectPokemonById(Integer id);
-
-    /***
-     * 通过查询条件查询宝可梦
-     * @param query 宝可梦的查询信息
-     * @return 宝可梦对象列表
-     */
-    List<PokemonBaseVo> selectPokemonByQuery(PokemonQuery query);
+    List<PaldeaPokemonVo> listPaldeaPokemons();
 }

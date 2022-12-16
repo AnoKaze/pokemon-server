@@ -3,9 +3,7 @@ package pers.anokaze.pokemon.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pers.anokaze.pokemon.entity.Pokemon;
-import pers.anokaze.pokemon.entity.vo.PokemonBaseVo;
-import pers.anokaze.pokemon.entity.vo.PokemonQuery;
+import pers.anokaze.pokemon.entity.vo.PaldeaPokemonVo;
 import pers.anokaze.pokemon.mapper.PokemonMapper;
 import pers.anokaze.pokemon.service.PokemonService;
 
@@ -21,12 +19,7 @@ public class PokemonServiceImpl implements PokemonService {
     final PokemonMapper pokemonMapper;
 
     @Override
-    public Pokemon selectPokemonById(Integer id) {
-        return pokemonMapper.selectPokemonById(id);
-    }
-
-    @Override
-    public List<PokemonBaseVo> selectPokemonByQuery(PokemonQuery query) {
-        return pokemonMapper.selectPokemonByQuery(query);
+    public List<PaldeaPokemonVo> listPaldeaPokemons() {
+        return pokemonMapper.listPaldeaPokemons();
     }
 }
