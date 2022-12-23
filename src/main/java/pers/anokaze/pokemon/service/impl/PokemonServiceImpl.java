@@ -3,7 +3,7 @@ package pers.anokaze.pokemon.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pers.anokaze.pokemon.entity.vo.PaldeaPokemonVo;
+import pers.anokaze.pokemon.entity.vo.RegionalPokemonVo;
 import pers.anokaze.pokemon.mapper.PokemonMapper;
 import pers.anokaze.pokemon.service.PokemonService;
 
@@ -19,7 +19,7 @@ public class PokemonServiceImpl implements PokemonService {
     final PokemonMapper pokemonMapper;
 
     @Override
-    public List<PaldeaPokemonVo> listPaldeaPokemons() {
-        return pokemonMapper.listPaldeaPokemons();
+    public List<RegionalPokemonVo> listRegionalPokemons(Byte regionId) {
+        return pokemonMapper.listRegionalPokemons(regionId);
     }
 }

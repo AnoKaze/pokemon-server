@@ -1,22 +1,22 @@
 package pers.anokaze.pokemon.constant;
 
 public interface Type {
-    int NORMAL = 0;
-    int FIRE = 1;
-    int WATER = 2;
-    int ELECTRIC = 3;
-    int GRASS = 4;
-    int ICE = 5;
-    int FIGHTING = 6;
-    int POISON = 7;
-    int GROUND = 8;
-    int FLYING = 9;
-    int PSYCHIC = 10;
-    int BUG = 11;
-    int ROCK = 12;
-    int GHOST = 13;
-    int DRAGON = 14;
-    int DARK = 15;
-    int STEEL = 16;
-    int FAIRY = 17;
+    byte NORMAL = 0;
+    byte FIRE = 1;
+    byte WATER = 2;
+    byte ELECTRIC = 3;
+    byte GRASS = 4;
+    byte ICE = 5;
+    byte FIGHTING = 6;
+    byte POISON = 7;
+    byte GROUND = 8;
+    byte FLYING = 9;
+    byte PSYCHIC = 10;
+    byte BUG = 11;
+    byte ROCK = 12;
+    byte GHOST = 13;
+    byte DRAGON = 14;
+    byte DARK = 15;
+    byte STEEL = 16;
+    byte FAIRY = 17;
 }

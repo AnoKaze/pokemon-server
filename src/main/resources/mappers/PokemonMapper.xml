@@ -3,7 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pers.anokaze.pokemon.mapper.PokemonMapper">
-    <select id="listPaldeaPokemons" resultType="pers.anokaze.pokemon.entity.vo.PaldeaPokemonVo">
-        SELECT * FROM paldea_pokemon_view;
+    <select id="listRegionalPokemons" resultType="pers.anokaze.pokemon.entity.vo.RegionalPokemonVo">
+        SELECT rp.regionalId, rp.nationalId, rp.formId, p.name, f.subName, f.type1, f.type2
+        FROM region_pokemon rp
+        LEFT JOIN form f ON rp.formId = f.id
+        LEFT JOIN pokemon p ON rp.nationalId = p.id
+        WHERE rp.regionId = #{regionId,jdbcType=TINYINT}
+        ORDER BY regionalId
     </select>
 </mapper>
